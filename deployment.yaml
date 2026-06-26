@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: cloudweb-deployment
+
+spec:
+  replicas: 3
+
+  selector:
+    matchLabels:
+      app: cloudweb
+
+  template:
+    metadata:
+      labels:
+        app: cloudweb
+
+    spec:
+      containers:
+      - name: cloudweb
+
+        image: containerk8s.azurecr.io/cloudweb-k8s:v1
+
+        ports:
+        - containerPort: 80
